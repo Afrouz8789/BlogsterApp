@@ -8,7 +8,7 @@ const s3 = new AWS.S3({
     accessKeyId: keys.accessKeyId,
     secretAccessKey: keys.secretAccessKey,
   },
-  region: 'us-west-2',
+  region: 'ap-south-1',
 });
 
 module.exports = (app) => {
@@ -18,9 +18,9 @@ module.exports = (app) => {
     s3.getSignedUrl(
       'putObject',
       {
-        Bucket: 'my-blog-bucket-4-6-2023',
+        Bucket: 'my-blogapp-bucket-1',
         ContentType: 'image/jpeg',
-        Key: key,
+        Key: key, // filename of uploaded image
       },
       (err, url) => res.send({ key, url })
     );
